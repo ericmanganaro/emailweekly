@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:v="urn:schemas-microsoft-com:vml">
+
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,57 +88,68 @@
   </xml>
 <![endif]-->
 </head>
+
 <body style="margin:0!important; padding:0!important; width: 100%!important;">
   <header>
-  <module name="Preheader">
-   <editable name="Preheader" type="rich"><p>Forwarded this? Get it at <a href="http://emailweekly.co">emailweekly.co</a></p></editable>
-    <webversion>View Online</webversion>
-  </module>
-  <module name="Header">
-    <a href="http://actionrocket.co"><img src="http://placehold.it/150x150" width="75" height="75" border="0" alt=""></a>
-    <h1>EmailWeekly</h1>
-    <editable name="intro" label="Intro text" type="rich"><h2>Salutation/Hello line</h2>
-    <p>Intro text</p></editable>
-  </module>
+    <module name="Preheader">
+      <editable name="Preheader" type="rich">
+        <p>Forwarded this? Get it at <a href="http://emailweekly.co">emailweekly.co</a></p>
+      </editable>
+      <webversion>View Online</webversion>
+    </module>
+    <hr>
+    <module name="Header">
+      <a href="http://actionrocket.co"><img src="http://placehold.it/150x150" width="75" height="75" border="0" alt=""></a>
+      <h1>EmailWeekly</h1>
+      <editable name="intro" label="Intro text" type="rich">
+        <h2>Salutation/Hello line</h2>
+        <p>Intro text</p>
+      </editable>
+    </module>
   </header>
   <hr>
   <section id="mainarticles">
-  <modulezone name="maincontent">
-  <module name="Quote">
-    <aside>
-      <p>&ldquo;<editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p>
-      <p>&mdash;<editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable></p>
-    </aside>
-  </module>
-  <module name="Article">
-  <editable name="Article">
-  <field type="text" name="headline"></field>
-  <field type="rich" name="content"></field>
-  <field type="url" name="href"></field>
-  <field type="src" name="img"></field>
-      <article>
-      <a href="#" replace-href="{{href}}">
-        <img src="http://placehold.it/600x300" replace-src="{{img}}" width="300" height="150" border="0" alt="">
-        <h1 replace="{{headline}}">Article Headline</h1>
-        <content replace="{{content}}"><p>Small bit of blurb</p></content>
-      </a>
-    </article>
-  </editable>
-  </module>
-  </modulezone>
+    <modulezone name="maincontent">
+      <module name="Quote">
+        <aside>
+          <p>&ldquo;
+            <editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p>
+          <p>&mdash;
+            <editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable>
+          </p>
+        </aside>
+      </module>
+      <module name="Article">
+        <editable name="Article">
+          <field type="text" name="headline"></field>
+          <field type="rich" name="content"></field>
+          <field type="url" name="href"></field>
+          <field type="src" name="img"></field>
+          <article>
+            <a href="#" replace-href="{{href}}">
+              <img src="http://placehold.it/600x300" replace-src="{{img}}" width="300" height="150" border="0" alt="">
+              <h1 replace="{{headline}}">Article Headline</h1>
+              <content replace="{{content}}">
+                <p>Small bit of blurb</p>
+              </content>
+            </a>
+          </article>
+        </editable>
+      </module>
+    </modulezone>
   </section>
   <hr>
   <section id="secondaryarticles">
     <h1>Secondary Links</h1>
     <ul>
-    <modulezone name="secondarylinks">
-  <module name="Article">
-  <field type="text" name="link_text"></field>
-  <field type="url" name="href"></field>
-  <field type="text" name="emoji"></field>
-      <li><span replace="{{emoji}}">💪</span>&nbsp;<a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
-  </module>
-    </modulezone>
+      <modulezone name="secondarylinks">
+        <module name="Article">
+          <field type="text" name="link_text"></field>
+          <field type="url" name="href"></field>
+          <field type="text" name="emoji"></field>
+          <li><span replace="{{emoji}}">💪</span>&nbsp;<a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
+        </module>
+      </modulezone>
     </ul>
   </section>
   <footer>
@@ -159,7 +171,7 @@ If you don't want these emails any more, please unsubscribe below. Have a nice d
 503 Pill Box, 115 Coventry Road, 
 Bethnal Green, London, E2 6GH. UK</small></p>
 </address>
-    <p><small>© 2011-2017 Action Rocket Ltd. All Rights Reserved.
+    <p><small>© 2011-<content replace="{{ 'now' | date: '%Y' }}">2017</content> Action Rocket Ltd. All Rights Reserved.
 Registered in England and Wales, № 07783258. VAT № 130667819.</small></p>
   </footer>
   <escape>
@@ -167,5 +179,4 @@ Registered in England and Wales, № 07783258. VAT № 130667819.</small></p>
     <singleline /></singleline>
   </escape>
 </body>
-
 </html>
