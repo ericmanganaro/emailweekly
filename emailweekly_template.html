@@ -100,11 +100,11 @@
     <module name="Header">
       <a href="http://actionrocket.co"><img src="http://placehold.it/150x150" width="75" height="75" border="0" alt=""></a>
       <h1>#EmailWeekly</h1>
-      <h2><editable name="intro" label="Intro text">
+      <h2 rule="{% show_if editables.intro.content %}"><editable name="intro" label="Intro text">
         Hi[if:firstname] [firstname][endif]!
       </editable>
       </h2>
-      <p>
+      <p rule="{% show_if editables.bodycopy.content %}">
       <editable name="bodycopy" label="Body copy" type="rich">
 
       </editable>
@@ -113,12 +113,13 @@
   </header>
   <hr>
   <section id="mainarticles">
-    <modulezone name="maincontent">
+    <modulezone name="maincontent" label="Main Content Area">
       <module name="Quote">
         <aside>
           <p>&ldquo;<editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p>
-          <p>&mdash;<editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable></p>
+          <p rule="{% show_if editables.quoteattribution.content %}">&mdash;<editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable></p>
         </aside>
+          <hr>
       </module>
       <module name="Article">
         <editable name="Article">
@@ -127,15 +128,16 @@
           <field type="url" name="href"></field>
           <field type="src" name="img"></field>
           <article>
-            <a href="#" replace-href="{{href}}">
-              <img src="http://placehold.it/600x300" replace-src="{{img}}" width="300" height="150" border="0" alt="">
-              <h1 replace="{{headline}}">Article Headline</h1>
-              <content replace="{{content}}">
+            <a href="http://" replace-href="{{href}}">
+              <img src="http://placehold.it/600x300" replace-src="{{img}}" width="300" height="150" border="0" alt="" rule="{% show_if img %}">
+              <h1 replace="{{headline}}" rule="{% show_if headline %}">Article Headline</h1>
+              <content replace="{{content}}" rule="{% show_if content %}">
                 <p>Small bit of blurb</p>
               </content>
             </a>
           </article>
         </editable>
+          <hr>
       </module>
     </modulezone>
   </section>
@@ -143,22 +145,24 @@
   <section id="secondaryarticles">
     <h1>Secondary Links</h1>
     <ul>
-      <modulezone name="secondarylinks">
+      <modulezone name="secondarylinks" label="Secondary Links" hint="update the emoji as required">
         <module name="Article">
           <field type="text" name="link_text"></field>
           <field type="url" name="href"></field>
           <field type="text" name="emoji"></field>
-          <li><span replace="{{emoji}}">💪</span> <a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
+          <li><span replace="{{emoji}}" rule="{% show_if emoji %}">💪</span> <a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
         </module>
       </modulezone>
     </ul>
   </section>
+  <hr>
   <footer>
     <p>Made with ♥ using <a href="http://taxiforemail.com">Taxi for Email</a></p>
     <p><small>You have received this email because you signed up at <a href="http://emaildesignreview.com">Email Design Review</a> or <a href="http://emailweekly.co">EmailWeekly.co</a>. 
 We try out new bits of code in this email, so it may break from time to time. Think of it as a permanent beta. 
 If you don't want these emails any more, please unsubscribe below. Have a nice day.</small></p>
 <nav>
+<h1>@ActionRocket on</h1>
 <ul>
 <li><a href="http://twitter.com/actionrocket">Twitter</a></li>
 <li><a href="http://instagram.com/actionrocket">Instagram</a></li>
