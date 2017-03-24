@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:v="urn:schemas-microsoft-com:vml">
-
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,7 +88,7 @@
 <![endif]-->
 </head>
 
-<body style="margin:0!important; padding:0!important; width: 100%!important;">
+<body>
   <header>
     <module name="Preheader">
       <editable name="Preheader" type="rich">
@@ -100,11 +99,16 @@
     <hr>
     <module name="Header">
       <a href="http://actionrocket.co"><img src="http://placehold.it/150x150" width="75" height="75" border="0" alt=""></a>
-      <h1>EmailWeekly</h1>
-      <editable name="intro" label="Intro text" type="rich">
-        <h2>Salutation/Hello line</h2>
-        <p>Intro text</p>
+      <h1>#EmailWeekly</h1>
+      <h2><editable name="intro" label="Intro text">
+        Hi[if:firstname] [firstname][endif]!
       </editable>
+      </h2>
+      <p>
+      <editable name="bodycopy" label="Body copy" type="rich">
+
+      </editable>
+      </p>
     </module>
   </header>
   <hr>
@@ -112,11 +116,8 @@
     <modulezone name="maincontent">
       <module name="Quote">
         <aside>
-          <p>&ldquo;
-            <editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p>
-          <p>&mdash;
-            <editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable>
-          </p>
+          <p>&ldquo;<editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p>
+          <p>&mdash;<editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable></p>
         </aside>
       </module>
       <module name="Article">
@@ -147,7 +148,7 @@
           <field type="text" name="link_text"></field>
           <field type="url" name="href"></field>
           <field type="text" name="emoji"></field>
-          <li><span replace="{{emoji}}">💪</span>&nbsp;<a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
+          <li><span replace="{{emoji}}">💪</span> <a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
         </module>
       </modulezone>
     </ul>
@@ -157,14 +158,24 @@
     <p><small>You have received this email because you signed up at <a href="http://emaildesignreview.com">Email Design Review</a> or <a href="http://emailweekly.co">EmailWeekly.co</a>. 
 We try out new bits of code in this email, so it may break from time to time. Think of it as a permanent beta. 
 If you don't want these emails any more, please unsubscribe below. Have a nice day.</small></p>
+<nav>
+<ul>
+<li><a href="http://twitter.com/actionrocket">Twitter</a></li>
+<li><a href="http://instagram.com/actionrocket">Instagram</a></li>
+<li><a href="https://www.linkedin.com/company/2662029">Linkedin</a></li>
+<li><a href="https://dribbble.com/actionrocket">Dribbble</a></li>
+</ul>
+</nav>
+<nav>
     <ul>
-      <li><a href="http://emailweekly.co/">Subscribe</a> </li>
+      <li><a href="http://emailweekly.co/">Subscribe</a></li>
       <li><a href="http://actionrocket.co/contact/">Contact Us</a></li>
       <li><a href="http://actionrocket.co/privacy/">Privacy Policy</a></li>
       <li>
         <unsubscribe>Unsubscribe</unsubscribe>
       </li>
     </ul>
+</nav>
     <img src="http://img.actionrocket.co/actionrocket.co/taxiforemail/templates/emaildesignreview/ar-small.gif" width="77" height="52" style="display:block;" border="0" alt="ActionRocket" />
     <address>
 <p><small>ActionRocket
@@ -178,5 +189,7 @@ Registered in England and Wales, № 07783258. VAT № 130667819.</small></p>
     <!--this bit keeps campaign monitor happy-->
     <singleline /></singleline>
   </escape>
+  <field type="code" name="tracking" label="Tracking embed code"></field>
+  <content replace="{{tracking}}"></content>
 </body>
 </html>
