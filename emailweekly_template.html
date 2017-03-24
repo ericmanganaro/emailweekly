@@ -98,8 +98,9 @@
     </module>
     <hr>
     <module name="Header">
+    <field type="number" name="Number"></field>
       <a href="http://actionrocket.co"><img src="http://placehold.it/150x150" width="75" height="75" border="0" alt=""></a>
-      <h1>#EmailWeekly</h1>
+      <h1>#EmailWeekly<content rule="{% show_if number %}"> №<content replace="{{Number}}"></content></content></h1>
       <h2 rule="{% show_if editables.intro.content %}"><editable name="intro" label="Intro text">
         Hi[if:firstname] [firstname][endif]!
       </editable>
@@ -141,11 +142,11 @@
       </module>
     </modulezone>
   </section>
-  <hr>
   <section id="secondaryarticles">
-    <h1>Secondary Links</h1>
+    <h1 replace="{{modulezones.secondarylinks.secondarylinksheader}}">Secondary Links</h1>
     <ul>
       <modulezone name="secondarylinks" label="Secondary Links" hint="update the emoji as required">
+      <field name="secondarylinksheader" type="text" label="Secondary Links Header"></field>
         <module name="Article">
           <field type="text" name="link_text"></field>
           <field type="url" name="href"></field>
@@ -164,12 +165,21 @@ If you don't want these emails any more, please unsubscribe below. Have a nice d
 <nav>
 <h1>@ActionRocket on</h1>
 <ul>
-<li><a href="http://twitter.com/actionrocket">Twitter</a></li>
-<li><a href="http://instagram.com/actionrocket">Instagram</a></li>
+<li><a href="https://twitter.com/actionrocket">Twitter</a></li>
+<li><a href="https://instagram.com/actionrocket">Instagram</a></li>
 <li><a href="https://www.linkedin.com/company/2662029">Linkedin</a></li>
 <li><a href="https://dribbble.com/actionrocket">Dribbble</a></li>
 </ul>
 </nav>
+
+    <img src="http://img.actionrocket.co/actionrocket.co/taxiforemail/templates/emaildesignreview/ar-small.gif" width="77" height="52" style="display:block;" border="0" alt="ActionRocket" />
+    <address>
+<p><small>ActionRocket
+503 Pill Box, 115 Coventry Road, 
+Bethnal Green, London, E2 6GH. UK</small></p>
+</address>
+    <p><small>© 2011-<content replace="{{ 'now' | date: '%Y' }}">2017</content> Action Rocket Ltd. All Rights Reserved.
+Registered in England and Wales, № 07783258. VAT № 130667819.</small></p>
 <nav>
     <ul>
       <li><a href="http://emailweekly.co/">Subscribe</a></li>
@@ -180,20 +190,13 @@ If you don't want these emails any more, please unsubscribe below. Have a nice d
       </li>
     </ul>
 </nav>
-    <img src="http://img.actionrocket.co/actionrocket.co/taxiforemail/templates/emaildesignreview/ar-small.gif" width="77" height="52" style="display:block;" border="0" alt="ActionRocket" />
-    <address>
-<p><small>ActionRocket
-503 Pill Box, 115 Coventry Road, 
-Bethnal Green, London, E2 6GH. UK</small></p>
-</address>
-    <p><small>© 2011-<content replace="{{ 'now' | date: '%Y' }}">2017</content> Action Rocket Ltd. All Rights Reserved.
-Registered in England and Wales, № 07783258. VAT № 130667819.</small></p>
   </footer>
+  
   <escape>
     <!--this bit keeps campaign monitor happy-->
     <singleline /></singleline>
   </escape>
   <field type="code" name="tracking" label="Tracking embed code"></field>
-  <content replace="{{tracking}}"></content>
+  <content replace="{{tracking}}"></content> 
 </body>
 </html>
