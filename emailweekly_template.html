@@ -99,8 +99,8 @@
     <hr>
     <module name="Header">
     <field type="number" name="Number"></field>
-      <a href="http://actionrocket.co"><img src="http://placehold.it/150x150" width="75" height="75" border="0" alt=""></a>
-      <h1>#EmailWeekly<content rule="{% show_if number %}"> №<content replace="{{Number}}"></content></content></h1>
+      <a href="http://actionrocket.co"><img src="http://img.actionrocket.co/ActionRocket/emailweekly/cdn/misc-images/logo.png" width="75" height="75" border="0" alt=""></a>
+      <h1>#EmailWeekly<content rule="{% show_if Number %}"> &#8470;<content replace="{{Number}}"></content></content></h1>
       <h2 rule="{% show_if editables.intro.content %}"><editable name="intro" label="Intro text">
         Hi[if:firstname] [firstname][endif]!
       </editable>
@@ -148,10 +148,12 @@
       <modulezone name="secondarylinks" label="Secondary Links" hint="update the emoji as required">
       <field name="secondarylinksheader" type="text" label="Secondary Links Header"></field>
         <module name="Article">
+        <editable name="secondarylink" label="Secondary Link">
           <field type="text" name="link_text"></field>
           <field type="url" name="href"></field>
           <field type="text" name="emoji"></field>
           <li><span replace="{{emoji}}" rule="{% show_if emoji %}">💪</span> <a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
+        </editable>
         </module>
       </modulezone>
     </ul>
@@ -178,8 +180,8 @@ If you don't want these emails any more, please unsubscribe below. Have a nice d
 503 Pill Box, 115 Coventry Road, 
 Bethnal Green, London, E2 6GH. UK</small></p>
 </address>
-    <p><small>© 2011-<content replace="{{ 'now' | date: '%Y' }}">2017</content> Action Rocket Ltd. All Rights Reserved.
-Registered in England and Wales, № 07783258. VAT № 130667819.</small></p>
+    <p><small>&copy; 2011-<content replace="{{ 'now' | date: '%Y' }}">2017</content> Action Rocket Ltd. All Rights Reserved.
+Registered in England and Wales, &#8470; 07783258. VAT &#8470; 130667819.</small></p>
 <nav>
     <ul>
       <li><a href="http://emailweekly.co/">Subscribe</a></li>
