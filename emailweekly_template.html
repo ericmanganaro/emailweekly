@@ -11,12 +11,23 @@
     * {mso-line-height-rule: exactly;}
     * {-webkit-text-size-adjust: none;-ms-text-size-adjust: none;}
     table td {border-collapse: collapse;}
-    html, body, p, div {/*margin: 0;padding: 0;*/}
+    html, body, p, div {margin: 0;padding: 0;}
     .ExternalClass {width: 100%;}
     .ExternalClass * {line-height: 110%}
-    img {-ms-interpolation-mode: bicubic;/*display: block;*/border: 0;}
+    img {-ms-interpolation-mode: bicubic;display: block;border: 0;}
     a[x-apple-data-detectors] {color: inherit!important;text-decoration: none!important;font-size: inherit!important;font-family: inherit!important;font-weight: inherit!important;line-height: inherit!important;} 
     div[style*="margin: 16px 0"] {margin: 0!important;}
+  </style>
+  <style type="text/css">
+  body {font-family: Helvetica, Arial, sans-serif; font-size: 1em; line-height: 1.8em; color:#222;}
+  ul, li{padding:0;margin: 0;list-style: none;}
+  .header{background:rgba(224, 15, 65, .5);padding:20px;}
+  .pagewrap{max-width:1600px;margin: 0 auto;}
+  #mainarticles{font-size:0;}
+  .quote-holder{border-radius: 1000px; background: #333;height: 300px;color:#fff;}
+  .article{display:inline-block;width:300px;min-height:300px;padding:10px;background:#ccc; background-size: cover; background-position: center center; font-size:20px;}
+  .footer{background:#333;color:#eee;padding:20px;}
+  .footer a{color:#ddd;}
   </style>
   <style type="text/css">
     @media screen and (max-device-width:640px), screen and (max-width:640px) {
@@ -49,7 +60,6 @@
   </style>
   <style type="text/css">
     /* 
-    
     we're hiring designers & devs based in London
     @actionrocket
    
@@ -75,7 +85,6 @@
                                   MMM.                                          
                                  M:.
                                  
-   
         */
   </style>
   <!--[if gte mso 9]>
@@ -88,7 +97,8 @@
 <![endif]-->
 </head>
 
-<body>
+<body style="margin:0;padding:1%;min-width:98%;background:#eaeaea;">
+<div class="pagewrap">
   <header>
     <module name="Preheader">
       <editable name="Preheader" type="rich">
@@ -96,7 +106,8 @@
       </editable>
       <webversion>View Online</webversion>
     </module>
-    <hr>
+    
+  <div class="header">
     <module name="Header">
     <field type="number" name="Number"></field>
       <a href="http://actionrocket.co"><img src="http://img.actionrocket.co/ActionRocket/emailweekly/cdn/misc-images/logo.png" width="75" height="75" border="0" alt=""></a>
@@ -111,39 +122,40 @@
       </editable>
       </p>
     </module>
+    
+  </div>
   </header>
-  <hr>
+
   <section id="mainarticles">
     <modulezone name="maincontent" label="Main Content Area">
       <module name="Quote">
+      <div class="quote">
         <aside>
-          <p>&ldquo;<editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p>
+          <div class="quote-holder"><p>&ldquo;<editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p></div>
           <p rule="{% show_if editables.quoteattribution.content %}">&mdash;<editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable></p>
         </aside>
-          <hr>
+      </div>
       </module>
-      <module name="Article">
-        <editable name="Article">
+      <module name="Article"><editable name="Article">
+      <div class="article" replace-style="background-image:{{% if img %}}{{img}} {% endif%};">
           <field type="text" name="headline"></field>
           <field type="rich" name="content"></field>
           <field type="url" name="href"></field>
-          <field type="src" name="img"></field>
+          <field type="src" name="img" default="http://placehold.it/600x300"></field>
           <article>
             <a href="http://" replace-href="{{href}}">
-              <img src="http://placehold.it/600x300" replace-src="{{img}}" width="300" height="150" border="0" alt="" rule="{% show_if img %}">
               <h1 replace="{{headline}}" rule="{% show_if headline %}">Article Headline</h1>
               <content replace="{{content}}" rule="{% show_if content %}">
                 <p>Small bit of blurb</p>
               </content>
             </a>
           </article>
-        </editable>
-          <hr>
+      </div></editable>
       </module>
     </modulezone>
   </section>
   <section id="secondaryarticles">
-    <h1 replace="{{modulezones.secondarylinks.secondarylinksheader}}">Secondary Links</h1>
+    <h1 replace="{{modulezones.secondarylinks.secondarylinksheader}}" rule="{% modulezones.secondarylinks.secondarylinksheader %}">Secondary Links</h1>
     <ul>
       <modulezone name="secondarylinks" label="Secondary Links" hint="update the emoji as required">
       <field name="secondarylinksheader" type="text" label="Secondary Links Header"></field>
@@ -158,8 +170,8 @@
       </modulezone>
     </ul>
   </section>
-  <hr>
   <footer>
+  <div class="footer">
     <p>Made with ♥ using <a href="http://taxiforemail.com">Taxi for Email</a></p>
     <p><small>You have received this email because you signed up at <a href="http://emaildesignreview.com">Email Design Review</a> or <a href="http://emailweekly.co">EmailWeekly.co</a>. 
 We try out new bits of code in this email, so it may break from time to time. Think of it as a permanent beta. 
@@ -170,6 +182,7 @@ If you don't want these emails any more, please unsubscribe below. Have a nice d
 <li><a href="https://twitter.com/actionrocket">Twitter</a></li>
 <li><a href="https://instagram.com/actionrocket">Instagram</a></li>
 <li><a href="https://www.linkedin.com/company/2662029">Linkedin</a></li>
+<li><a href="https://medium.com/action-rocket">Medium</a></li>
 <li><a href="https://dribbble.com/actionrocket">Dribbble</a></li>
 </ul>
 </nav>
@@ -192,6 +205,7 @@ Registered in England and Wales, &#8470; 07783258. VAT &#8470; 130667819.</small
       </li>
     </ul>
 </nav>
+  </div>
   </footer>
   
   <escape>
@@ -200,5 +214,6 @@ Registered in England and Wales, &#8470; 07783258. VAT &#8470; 130667819.</small
   </escape>
   <field type="code" name="tracking" label="Tracking embed code"></field>
   <content replace="{{tracking}}"></content> 
+  </div>
 </body>
 </html>
