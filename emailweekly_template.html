@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:v="urn:schemas-microsoft-com:vml">
+<html xmlns:v="urn:schemas-microsoft-com:vml" lang="en" xml:lang="en">
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,10 +25,32 @@
   .pagewrap{max-width:1600px;margin: 0 auto;}
   #mainarticles{font-size:0;}
   .quote-holder{border-radius: 1000px; background: #333;height: 300px;color:#fff;}
-  .article{display:inline-block;width:300px;min-height:300px;padding:10px;background:#ccc; background-size: cover; background-position: center center; font-size:20px;}
+  .article{min-height:300px;padding:10px;background:#ccc; background-size: cover; background-position: center center; font-size:20px;}
   .footer{background:#333;color:#eee;padding:20px;}
   .footer a{color:#ddd;}
   </style>
+ 
+  <style type="text/css">
+  .grid-container{text-align:center;font-size:0;}
+  .grid-item{display:inline-block;width:275px;}
+  </style>
+  <style type="text/css">
+  @supports (display: grid){
+  .grid-container{display:grid;grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-gap: 0;}
+  .grid-item{display:block;width:100%;}
+  @media screen and (max-device-width:1350px), screen and (max-width:1350px)
+       {.grid-container{grid-template-columns: 25% 25% 25% 25%;}
+       @media screen and (max-device-width:1050px), screen and (max-width:1050px)
+       {.grid-container{grid-template-columns: 33% 34% 33%;}
+       @media screen and (max-device-width:750px), screen and (max-width:750px)
+       { .grid-container{grid-template-columns: 50% 50%; }
+       @media screen and (max-device-width:450px), screen and (max-width:450px)
+       {.grid-container{grid-template-columns: 100%;}
+           
+       }
+  </style>
+  
   <style type="text/css">
     @media screen and (max-device-width:640px), screen and (max-width:640px) {
     .wrapto100pc{width: 100%!important;max-width: 1000px!important;height: auto!important;}
@@ -127,9 +149,10 @@
   </header>
 
   <section id="mainarticles">
+  <div class="grid-container">
     <modulezone name="maincontent" label="Main Content Area">
       <module name="Quote">
-      <div class="quote">
+      <div class="grid-item">
         <aside>
           <div class="quote-holder"><p>&ldquo;<editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p></div>
           <p rule="{% show_if editables.quoteattribution.content %}">&mdash;<editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable></p>
@@ -137,11 +160,12 @@
       </div>
       </module>
       <module name="Article"><editable name="Article">
-      <div class="article" replace-style="background-image:{{% if img %}}{{img}} {% endif%};">
+      <div class="grid-item article" replace-style="background-color:{{bgcolor}};{% unless img =='' %}background-image:url({{img}});{% endunless%}">
           <field type="text" name="headline"></field>
           <field type="rich" name="content"></field>
           <field type="url" name="href"></field>
           <field type="src" name="img" default="http://placehold.it/600x300"></field>
+          <field type="color" name="bgcolor" default="#eeeeee"></field>
           <article>
             <a href="http://" replace-href="{{href}}">
               <h1 replace="{{headline}}" rule="{% show_if headline %}">Article Headline</h1>
@@ -153,6 +177,7 @@
       </div></editable>
       </module>
     </modulezone>
+    </div>
   </section>
   <section id="secondaryarticles">
     <h1 replace="{{modulezones.secondarylinks.secondarylinksheader}}" rule="{% modulezones.secondarylinks.secondarylinksheader %}">Secondary Links</h1>
