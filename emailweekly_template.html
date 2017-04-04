@@ -11,34 +11,38 @@
     * {mso-line-height-rule: exactly;}
     * {-webkit-text-size-adjust: none;-ms-text-size-adjust: none;}
     table td {border-collapse: collapse;}
-    html, body, p, div {margin: 0;padding: 0;}
+    html, body, h1, p, div {margin: 0;padding: 0;}
     .ExternalClass {width: 100%;}
     .ExternalClass * {line-height: 110%}
     img {-ms-interpolation-mode: bicubic;display: block;border: 0;}
+      </style>
+  <style type="text/css">
     a[x-apple-data-detectors] {color: inherit!important;text-decoration: none!important;font-size: inherit!important;font-family: inherit!important;font-weight: inherit!important;line-height: inherit!important;} 
     div[style*="margin: 16px 0"] {margin: 0!important;}
   </style>
   <style type="text/css">
   body {font-family: Helvetica, Arial, sans-serif; font-size: 1em; line-height: 1.8em; color:#222;}
   ul, li{padding:0;margin: 0;list-style: none;}
-  .header{background:rgba(224, 15, 65, .5);padding:20px;}
-  .pagewrap{max-width:1600px;margin: 0 auto;}
+  .header{background:#ffffff;padding:20px;}
+  .pagewrap{max-width:1600px;margin: 0 auto;display:table;}
   #mainarticles{font-size:0;}
-  .quote-holder{border-radius: 1000px; background: #333;height: 300px;color:#fff;}
   .article{min-height:300px;padding:10px;background:#ccc; background-size: cover; background-position: center center; font-size:20px;}
+  .vh-wrap{display: table; width: 100%; min-height: 300px;}
+  .vh-inner{display: table-cell; width: 100%;vertical-align: middle;  }
   .footer{background:#333;color:#eee;padding:20px;}
   .footer a{color:#ddd;}
   </style>
  
   <style type="text/css">
-  .grid-container{text-align:center;font-size:0;}
-  .grid-item{display:inline-block;width:275px;}
+  .grid-container{text-align:center;font-size:0;line-height:0; background: #333333;}
+  .grid-item{display:inline-block;width:100%;max-width:300px;font-size:16px;line-height: 22px;}
+  .grid-item h1{font-size:20px;line-height: 26px;}
   </style>
   <style type="text/css">
   @supports (display: grid){
   .grid-container{display:grid;grid-template-columns: 20% 20% 20% 20% 20%;
   grid-gap: 0;}
-  .grid-item{display:block;width:100%;}
+  .grid-item{display:block;width:auto;max-width: 1600px;}
   @media screen and (max-device-width:1350px), screen and (max-width:1350px)
        {.grid-container{grid-template-columns: 25% 25% 25% 25%;}
        @media screen and (max-device-width:1050px), screen and (max-width:1050px)
@@ -151,14 +155,6 @@
   <section id="mainarticles">
   <div class="grid-container">
     <modulezone name="maincontent" label="Main Content Area">
-      <module name="Quote">
-      <div class="grid-item">
-        <aside>
-          <div class="quote-holder"><p>&ldquo;<editable name="quotetext" label="Quote Text" type="rich">quote</editable>&rdquo;</p></div>
-          <p rule="{% show_if editables.quoteattribution.content %}">&mdash;<editable name="quoteattribution" label="Quote Attribution" type="rich"><a href="#">attribution</a></editable></p>
-        </aside>
-      </div>
-      </module>
       <module name="Article"><editable name="Article">
       <div class="grid-item article" replace-style="background-color:{{bgcolor}};{% unless img =='' %}background-image:url({{img}});{% endunless%}">
           <field type="text" name="headline"></field>
@@ -166,34 +162,19 @@
           <field type="url" name="href"></field>
           <field type="src" name="img" default="http://placehold.it/600x300"></field>
           <field type="color" name="bgcolor" default="#eeeeee"></field>
-          <article>
-            <a href="http://" replace-href="{{href}}">
+          <article><div class="vh-wrap"><div class="vh-inner">
+            <a href="http://" replace-href="{{href}}" rule="{% show_outer_if href %}">
               <h1 replace="{{headline}}" rule="{% show_if headline %}">Article Headline</h1>
               <content replace="{{content}}" rule="{% show_if content %}">
                 <p>Small bit of blurb</p>
               </content>
             </a>
+            </div></div>
           </article>
       </div></editable>
       </module>
     </modulezone>
     </div>
-  </section>
-  <section id="secondaryarticles">
-    <h1 replace="{{modulezones.secondarylinks.secondarylinksheader}}" rule="{% modulezones.secondarylinks.secondarylinksheader %}">Secondary Links</h1>
-    <ul>
-      <modulezone name="secondarylinks" label="Secondary Links" hint="update the emoji as required">
-      <field name="secondarylinksheader" type="text" label="Secondary Links Header"></field>
-        <module name="Article">
-        <editable name="secondarylink" label="Secondary Link">
-          <field type="text" name="link_text"></field>
-          <field type="url" name="href"></field>
-          <field type="text" name="emoji"></field>
-          <li><span replace="{{emoji}}" rule="{% show_if emoji %}">💪</span> <a href="#" replace-href="{{href}}" replace="{{link_text}}">Secondary link</a></li>
-        </editable>
-        </module>
-      </modulezone>
-    </ul>
   </section>
   <footer>
   <div class="footer">
