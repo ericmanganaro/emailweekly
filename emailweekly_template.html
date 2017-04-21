@@ -11,7 +11,7 @@
     * {mso-line-height-rule: exactly;}
     * {-webkit-text-size-adjust: none;-ms-text-size-adjust: none;}
     table td {border-collapse: collapse;}
-    html, body, h1, p, div {margin: 0;padding: 0;}
+    html, body, h1, h2, p, div {margin: 0;padding: 0;}
     .ExternalClass {width: 100%;}
     .ExternalClass * {line-height: 110%}
     img {-ms-interpolation-mode: bicubic;display: block;border: 0;}
@@ -23,14 +23,26 @@
   <style type="text/css">
   body {font-family: Helvetica, Arial, sans-serif; font-size: 1em; line-height: 1.8em; color:#222;}
   ul, li{padding:0;margin: 0;list-style: none;}
-  .header{background:#ffffff;padding:20px;}
+  .header{background:#ffffff;padding:40px 60px ;}
   .pagewrap{max-width:1600px;margin: 0 auto;display:table;}
   .preheader{padding:5px;}
   #mainarticles{font-size:0;}
-  .article{min-height:300px;padding:10px;background:#ccc; background-size: cover; background-position: center center; font-size:20px;}
-  .vh-inner a{text-decoration: none; color:#ffffff;}
+  .article{padding:10px;background:#ccc; background-size: cover; background-position: center center; font-size:20px;}
+  .vh-inner{text-decoration: none; color:#ffffff;display: table-cell; width: 100%;vertical-align: middle;}
+  .vh-row{display: table-row;width: 100%;height: 50%;}
+  .vh-social{text-decoration: none; color:#ffffff;display: table-cell; width: 50%;vertical-align: middle;}
   .vh-wrap{display: table; width: 100%; min-height: 300px;}
-  .vh-inner{display: table-cell; width: 100%;vertical-align: middle;  }
+  .vh-wrap img{margin:0 auto; display:block;padding-bottom:20px;}
+  .grid-item.social-buttons{background:#333;padding:0;max-width:320px;}
+  .grid-item.tweet{padding:20px;max-width:280px;text-align:left; background:#55acee;}
+  .grid-item.tweet .vh-wrap{min-height: 280px;}
+  .grid-item.tweet-attribution{font-size:12px;}
+  .social-buttons .vh-wrap{min-height: 320px;}
+  .header h1{font-size:75px; line-height: 85px;padding:10px 0 0 0;letter-spacing: -4px;opacity:0.1;}
+  .header h2{font-size:120px; line-height: 120px;padding:20px 0 0 0;letter-spacing: -5px;}
+  .header p{font-size:48px; line-height: 56px;padding:30px 0 0 0;letter-spacing: -2px;}
+  .header img{padding-bottom:20px;}
+  .header.reverse{color:#ffffff;}
   .footer{background:#333;color:#eee;padding:20px;}
   .footer a{color:#dddddd;}
   </style>
@@ -86,7 +98,6 @@
     .stacktop{display:table-header-group!important;}
     .stackbottom{display:table-footer-group!important;}
     
-    /*.grid-item{max-width:640px; }*/
     }
   </style>
   <style type="text/css">
@@ -118,6 +129,11 @@
                                  
         */
   </style>
+  <taxi-preview-only>
+  <style>
+  .grid-item{min-width: 300px;}
+  </style>
+  </taxi-preview-only>
   <!--[if gte mso 9]>
   <xml>
   <o:OfficeDocumentSettings>
@@ -127,7 +143,6 @@
   </xml>
 <![endif]-->
 </head>
-
 <body style="margin:0!important;padding:0!important;width:100%!important;background:#eaeaea;">
 <div class="pagewrap">
   <header>
@@ -142,18 +157,20 @@
       </p>
     </module>
     </div>
-  <div class="header">
+  <div class="header" replace-class="header{% if modules.Header.reverse %} reverse{%endif%}" replace-style="{% if modules.Header.bgcolor %}background-color:{{modules.Header.bgcolor}};{%endif%}">
     <module name="Header">
     <field type="number" name="Number"></field>
+    <field type="color" name="bgcolor" default="#ffffff"></field>
+    <field type="checkbox" name="reverse" default="false"></field>
       <a href="http://actionrocket.co"><img src="http://img.actionrocket.co/ActionRocket/emailweekly/cdn/misc-images/logo.png" width="75" height="75" border="0" alt=""></a>
       <h1>#EmailWeekly<content rule="{% show_if Number %}"> &#8470;<content replace="{{Number}}"></content></content></h1>
       <h2 rule="{% show_if editables.intro.content %}"><editable name="intro" label="Intro text">
-        Hi[if:firstname] [firstname][endif]!
+        Hello[if:firstname] [firstname][endif]!
       </editable>
       </h2>
       <p rule="{% show_if editables.bodycopy.content %}">
       <editable name="bodycopy" label="Body copy" type="rich">
-
+body copy
       </editable>
       </p>
     </module>
@@ -163,26 +180,79 @@
 
   <section id="mainarticles">
   <div class="grid-container">
-    <modulezone name="maincontent" label="Main Content Area">
-      <module name="Article"><editable name="Article">
+    <modulezone name="maincontent" label="Main Content Area" class="grid-container">
+      <module name="Article" class="grid-item"><editable name="Article">
       <div class="grid-item article" replace-style="background-color:{{bgcolor}};{% unless img =='' %}background-image:url({{img}});{% endunless%}">
           <field type="text" name="headline"></field>
           <field type="rich" name="content"></field>
           <field type="url" name="href"></field>
           <field type="src" name="img" default="http://placehold.it/600x300"></field>
           <field type="color" name="bgcolor" default="#111111"></field>
-          <article><div class="vh-wrap"><div class="vh-inner">
-            <a href="http://" replace-href="{{href}}" rule="{% show_outer_if href %}">
+          <article><div class="vh-wrap">
+            <a href="http://" replace-href="{{href}}" rule="{% show_outer_if href %}" class="vh-inner">
               <h1 replace="{{headline}}" rule="{% show_if headline %}">Article Headline</h1>
               <content replace="{{content}}" rule="{% show_if content %}">
                 <p>Small bit of blurb</p>
               </content>
             </a>
-            </div></div>
+            </div>
+          </article>
+      </div></editable>
+      </module>
+      <module name="Audio" class="grid-item"><editable name="Audio">
+      <div class="grid-item article" replace-style="background-color:{{bgcolor}};{% unless img =='' %}background-image:url({{img}});{% endunless%}">
+          <field type="text" name="headline"></field>
+          <field type="rich" name="content"></field>
+          <field type="url" name="href"></field>
+          <field type="src" name="img" default="http://placehold.it/600x300"></field>
+          <field type="color" name="bgcolor" default="#111111"></field>
+          <article><div class="vh-wrap">
+            <a href="http://" replace-href="{{href}}" rule="{% show_outer_if href %}" class="vh-inner">
+            <img src="http://placehold.it/150x150" height="75" width="75">
+              <h1 replace="{{headline}}" rule="{% show_if headline %}">Article Headline</h1>
+              <content replace="{{content}}" rule="{% show_if content %}">
+                <p>Small bit of blurb</p>
+              </content>
+            </a>
+            </div>
+          </article>
+      </div></editable>
+      </module>
+      <module name="Tweet" class="grid-item"><editable name="Tweet">
+      <div class="grid-item article tweet" replace-style="background-color:{{bgcolor}};{% unless img =='' %}background-image:url({{img}});{% endunless%}">
+          
+          <field type="rich" name="content"></field>
+          <field type="text" name="twitteruser" label="Twitter Username"></field>
+          <field type="url" name="href"></field>
+          <field type="src" name="img" default="http://placehold.it/600x300"></field>
+          <field type="color" name="bgcolor" default="#111111"></field>
+          <article><div class="vh-wrap">
+            <a href="http://" replace-href="{{href}}" rule="{% show_outer_if href %}" class="vh-inner">
+            <img src="http://placehold.it/150x150" height="75" width="75">
+              <content replace="{{content}}" rule="{% show_if content %}">
+                <p>Small bit of blurb</p>
+              </content>
+              <p rule="{% show_if twitteruser %}" class="tweet-attribution">&mdash;<content replace="{{twitteruser}}"></content></p>
+            </a>
+            </div>
           </article>
       </div></editable>
       </module>
     </modulezone>
+    <div class="grid-item article social-buttons">
+          <nav><div class="vh-wrap">
+          <div class="vh-row">
+          <a href="https://twitter.com/actionrocket" class="vh-social" style="background:#55acee;">Twitter</a>
+		  <a href="https://instagram.com/actionrocket" class="vh-social" style="background:#c32aa3;">Instagram</a>
+		  </div>
+		  <div class="vh-row">
+		  <a href="https://www.linkedin.com/company/2662029" class="vh-social" style="background:#007bb6;">Linkedin</a>
+		  <a href="https://medium.com/action-rocket" class="vh-social" style="background:#00AB6C;">Medium</a>
+          </div>
+            </div>
+            </nav>
+      </div>
+      
     </div>
   </section>
   <footer>
@@ -191,16 +261,6 @@
     <p><small>You have received this email because you signed up at <a href="http://emaildesignreview.com">Email Design Review</a> or <a href="http://emailweekly.co">EmailWeekly.co</a>. 
 We try out new bits of code in this email, so it may break from time to time. Think of it as a permanent beta. 
 If you don't want these emails any more, please unsubscribe below. Have a nice day.</small></p>
-<nav>
-<h1>@ActionRocket on</h1>
-<ul>
-<li><a href="https://twitter.com/actionrocket">Twitter</a></li>
-<li><a href="https://instagram.com/actionrocket">Instagram</a></li>
-<li><a href="https://www.linkedin.com/company/2662029">Linkedin</a></li>
-<li><a href="https://medium.com/action-rocket">Medium</a></li>
-<li><a href="https://dribbble.com/actionrocket">Dribbble</a></li>
-</ul>
-</nav>
 
     <address>
 <p><small>ActionRocket
