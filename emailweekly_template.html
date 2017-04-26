@@ -28,6 +28,7 @@
   .preheader{padding:5px;}
   #mainarticles{font-size:0;}
   .article, .audio{padding:10px;background:#ccc; background-size: cover; background-position: center center; }
+  .article-url-attribution p{padding:5px;font-size:14px; background: rgba(0, 0, 0, 0.2);display: inline-block;margin-top:10px;}
   .vh-inner{text-decoration: none; color:#ffffff;display: table-cell; width: 100%;vertical-align: middle;}
   .vh-row{display: table-row;width: 100%;height: 50%;}
   .vh-social{text-decoration: none; color:#ffffff;display: table-cell; width: 50%;vertical-align: middle;}
@@ -136,7 +137,7 @@
         */
   </style>
   <taxi-preview-only>
-  <style>
+  <style type="text/css">
   .grid-container > .grid-item{min-width: 300px!important;}
   </style>
   </taxi-preview-only>
@@ -150,6 +151,13 @@
 <![endif]-->
 </head>
 <body style="margin:0!important;padding:0!important;width:100%!important;background:#eaeaea;">
+<!--[if gte mso 9]>
+<!--WE WERE SO CLOSE TO NOT USING TABLES, THANK YOU MICROSOFT-->
+<table role="presentation" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+<td width="720">
+<![endif]-->
 <div class="pagewrap">
   <header>
   <div class="preheader">
@@ -199,7 +207,11 @@ body copy
               <h1 replace="{{headline}}" rule="{% show_if headline %}">Article Headline</h1>
               <content replace="{{content}}" rule="{% show_if content %}">
                 <p>Small bit of blurb</p>
+                
               </content>
+              <div class="article-url-attribution">
+              <p><img src="http://www.google.com/s2/favicons?domain=actionrocket.co" replace-src="http://www.google.com/s2/favicons?domain={{href}}" width="16" height="16" alt="" style="display:inline;vertical-align:middle;"> <content replace="{{ href | remove:'http://' | remove:'https://' | remove:'www.' | split:'/' | first }}">url goes here</content></p>
+              </div>
             </a>
             </div>
           </article>
@@ -284,5 +296,11 @@ Registered in England and Wales, &#8470; 07783258. VAT &#8470; 130667819.</small
   <field type="code" name="tracking" label="Tracking embed code"></field>
   <content replace="{{tracking}}"></content> 
   </div>
+  <!--[if gte mso 9]>
+</td>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+</tr>
+</table>
+<![endif]-->
 </body>
 </html>
