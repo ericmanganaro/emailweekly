@@ -20,28 +20,28 @@
     a[x-apple-data-detectors] {color: inherit!important;text-decoration: none!important;font-size: inherit!important;font-family: inherit!important;font-weight: inherit!important;line-height: inherit!important;} 
     div[style*="margin: 16px 0"] {margin: 0!important;}
   </style>
-  <style type="text/css">
-  body {font-family: Helvetica, Arial, sans-serif; font-size: 1em; line-height: 1.8em; color:#222;}
+  <style type="text/css">  
+  body {font-family: Helvetica, Arial, sans-serif; font-size: 1em; line-height: 1.8em; color:#222;background-color:#eaeaea!important;}
   ul, li{padding:0;margin: 0;list-style: none;}
-  .header{background:#ffffff;padding:40px 60px;}
+  .header{background:#ffffff;padding:40px 60px;border-bottom: none!important;}
   .pagewrap{max-width:1600px;margin: 0 auto;display:table;}
   .preheader{padding:5px;}
   #mainarticles{font-size:0;}
-  .article, .audio{padding:10px;background:#ccc; background-size: cover; background-position: center center; }
+  .article, .audio{padding:10px;background:#111111; background-size: cover; background-position: center center; }
   .article-url-attribution{padding-top:10px;}
   .article-url-attribution p{padding:5px;font-size:14px; background: rgba(0, 0, 0, 0.2);display: inline-block;border-radius: 3px;}
   .vh-inner{text-decoration: none; color:#ffffff;display: table-cell; width: 100%;vertical-align: middle;}
-  .vh-row{display: table-row;width: 100%;height: 50%;}
-  .vh-social{text-decoration: none; color:#ffffff;display: table-cell; width: 50%;vertical-align: middle;}
-  .vh-wrap{display: table; width: 100%; min-height: 300px;}
-  .vh-wrap img{margin:0 auto; display:block;}
+  .soc-row{display: table-row;width: 100%;height: 50%;}
+  .soc-social{text-decoration: none; color:#ffffff;display: table-cell; width: 50%;vertical-align: middle;}
+  .vh-wrap, .soc-wrap{display: table; width: 100%; height:300px;min-height: 300px;}
+  .vh-wrap img, .soc-wrap img{margin:0 auto; display:block;}
   .tweet img, .audio img{padding-bottom:20px;height:75px;width:75px;}
   .grid-item.social-buttons{background:#333;padding:0;max-width:320px!important;}
-  .grid-item.tweet{padding:10px;text-align:left; background:#55acee;}
-  .grid-item.tweet .vh-wrap{min-height: 300px;}
-  .grid-item.audio .vh-wrap{min-height: 300px;}
+  .grid-item.tweet, .tweet{padding:10px;text-align:center; background:#55acee;}
+  .grid-item.tweet .vh-wrap{height:300px;min-height: 300px;}
+  .grid-item.audio .vh-wrap{height:300px;min-height: 300px;}
   .grid-item.tweet-attribution{font-size:12px;}
-  .social-buttons .vh-wrap{min-height: 320px;}
+  .social-buttons .soc-wrap{height:320px;min-height: 320px;}
   .header h1{font-size:75px; line-height: 85px;padding:10px 0 0 0;letter-spacing: -4px;opacity:0.25;}
   .header h2{font-size:120px; line-height: 120px;padding:20px 0 0 0;letter-spacing: -5px;}
   .header p{font-size:48px; line-height: 56px;padding:30px 0 0 0;letter-spacing: -2px;}
@@ -52,11 +52,15 @@
   </style>
  
   <style type="text/css">
-  .grid-container{text-align:center;font-size:0;line-height:0; background: #333333;}
-  .grid-item{display:inline-block;width:100%;max-width:300px;font-size:16px;line-height: 22px;}
+  .grid-container{text-align:center;font-size:0;line-height:0; background: #111111!important;}
+  .grid-item{display:inline-block;width:100%;max-width:300px;font-size:16px;line-height: 22px;border-top: none!important;}
   .grid-item.social-buttons{max-width:320px;}
   .grid-item h1{font-size:20px;line-height: 26px;}
   .grid-item.article:hover {background: #333!important;background-image: none!important;}
+    .social-tw{background:#55acee;}
+    .social-ig{background:#c32aa3;}
+    .social-li{background:#007bb6;}
+    .social-md{background:#00AB6C;}
   
   </style>
   <style type="text/css">
@@ -146,6 +150,10 @@
   </style>
   </taxi-preview-only>
   <!--[if gte mso 9]>
+<style>
+.vh-inner{color:#333333;Margin-top:20px;}
+.vh-wrap{text-align: center;}
+</style>
   <xml>
   <o:OfficeDocumentSettings>
     <o:AllowPNG/>
@@ -154,14 +162,17 @@
   </xml>
 <![endif]-->
 </head>
-<body style="margin:0!important;padding:0!important;width:100%!important;background:#eaeaea;">
-<!--[if gte mso 9]>
-<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+<body style="margin:0!important;padding:0!important;width:100%!important;background:#eaeaea;background:#ffffff">
+
+
+<div class="pagewrap">
+<escape><!--[if gte mso 9]>
+<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="</escape><content replace="{{modules.Header.bgcolor}}" style="display:none"></content><escape>">
 <tr>
 <td style="font-size:0px;line-height:0px;">&nbsp;</td>
-<td width="720">
+<td width="760" style="padding:20px;">
 <![endif]-->
-<div class="pagewrap">
+</escape>
   <header>
   <div class="preheader">
     <module name="Preheader"> <p><small>
@@ -194,12 +205,25 @@ body copy
     
   </div>
   </header>
+  <!--[if gte mso 9]>
+</td>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+</tr>
+</table>
+<![endif]-->
+
 
   <section id="mainarticles">
-  <div class="grid-container">
+  <div class="grid-container" style="background:#ffffff">
+  <!--[if gte mso 9]>
+<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+<td width="720">
+<![endif]-->
     <modulezone name="maincontent" label="Main Content Area" class="grid-container">
       <module name="Article" class="grid-item"><editable name="Article">
-      <div class="grid-item article" replace-style="padding:10px;border-bottom:1px solid #333;{% unless img =='' %}background-image:url({{img}});{% endunless%}">
+      <div class="grid-item article" replace-style="padding:10px;border-top:1px solid #eee;{% unless img =='' %}background-image:url({{img}});{% endunless%}">
           <field type="text" name="headline"></field>
           <field type="rich" name="content"></field>
           <field type="url" name="href"></field>
@@ -220,12 +244,11 @@ body copy
       </div></editable>
       </module>
       <module name="Audio" class="grid-item"><editable name="Audio">
-      <div class="grid-item audio" replace-style="background-color:{{bgcolor}};{% unless img =='' %}background-image:url({{img}});{% endunless%}">
+      <div class="grid-item audio" replace-style="padding:10px;border-top:1px solid #eee;{% unless img =='' %}background-image:url({{img}});{% endunless%}">
           <field type="text" name="headline"></field>
           <field type="rich" name="content"></field>
           <field type="url" name="href"></field>
           <field type="src" name="img" default="speaker.png"></field>
-          <field type="color" name="bgcolor" default="#111111"></field>
           <article><div class="vh-wrap">
             <a href="http://" replace-href="{{href}}" rule="{% show_outer_if href %}" class="vh-inner">
             <img src="speaker.png" height="1" width="1" alt="" border="0">
@@ -238,7 +261,7 @@ body copy
       </div></editable>
       </module>
       <module name="Tweet" class="grid-item"><editable name="Tweet">
-      <div class="grid-item tweet">
+      <div class="grid-item tweet" style="padding:10px;border-top:1px solid #eee;">
           
           <field type="rich" name="content"></field>
           <field type="text" name="twitteruser" label="Twitter Username" default="@"></field>
@@ -256,22 +279,48 @@ body copy
       </div></editable>
       </module>
     </modulezone>
-    <div class="grid-item social-buttons">
-          <nav><div class="vh-wrap">
-          <div class="vh-row">
-          <a href="https://twitter.com/actionrocket" class="vh-social" style="background:#55acee;"><img src="twitter-logo.png" height="75" width="75" alt="Twitter"></a>
-		  <a href="https://instagram.com/actionrocket" class="vh-social" style="background:#c32aa3;"><img src="instagram-logo.png" height="75" width="75" alt="Instagram"></a>
+        <!--[if gte mso 9]>
+</td>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if gte mso 9]>
+<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#333333">
+<tr>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+<td width="720" style="padding:20px;">
+<![endif]-->
+    <div class="grid-item social-buttons" style="background:#333;">
+          <nav><div class="soc-wrap">
+          <div class="soc-row" align="center">
+          <a href="https://twitter.com/actionrocket" class="soc-social social-tw"><img src="twitter-logo.png" height="75" width="75" alt="Twitter"></a>
+		  <a href="https://instagram.com/actionrocket" class="soc-social social-ig"><img src="instagram-logo.png" height="75" width="75" alt="Instagram"></a>
 		  </div>
-		  <div class="vh-row">
-		  <a href="https://www.linkedin.com/company/2662029" class="vh-social" style="background:#007bb6;"><img src="linkedin-logo.png" height="75" width="75" alt="Linkedin"></a>
-		  <a href="https://medium.com/action-rocket" class="vh-social" style="background:#00AB6C;"><img src="medium-logo.png" height="75" width="75" alt="Medium"></a>
+		  <div class="soc-row" align="center">
+		  <a href="https://www.linkedin.com/company/2662029" class="soc-social social-li"><img src="linkedin-logo.png" height="75" width="75" alt="Linkedin"></a>
+		  <a href="https://medium.com/action-rocket" class="soc-social social-md"><img src="medium-logo.png" height="75" width="75" alt="Medium"></a>
           </div>
             </div>
             </nav>
       </div>
+            <!--[if gte mso 9]>
+</td>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+</tr>
+</table>
+<![endif]-->
+
       
     </div>
   </section>
+
+<!--[if gte mso 9]>
+<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#333333">
+<tr>
+<td style="font-size:0px;line-height:0px;">&nbsp;</td>
+<td width="760" style="padding:20px;">
+<![endif]-->
   <footer>
   <div class="footer">
     <p>Made with ♥ using <a href="http://taxiforemail.com">Taxi for Email</a></p>
@@ -289,19 +338,20 @@ Registered in England and Wales, &#8470; 07783258. VAT &#8470; 130667819.</small
 <p><small><a href="http://emailweekly.co/">Subscribe</a> &bull; <a href="http://actionrocket.co/contact/">Contact Us</a> &bull; <a href="http://actionrocket.co/privacy/">Privacy Policy</a> &bull; <unsubscribe>Unsubscribe</unsubscribe></small></p>
   </div>
   </footer>
-  
-  <escape>
-    <!--this bit keeps campaign monitor happy-->
-    <singleline /></singleline>
-  </escape>
-  <field type="code" name="tracking" label="Tracking embed code"></field>
-  <content replace="{{tracking}}"></content> 
-  </div>
-  <!--[if gte mso 9]>
+      <!--[if gte mso 9]>
 </td>
 <td style="font-size:0px;line-height:0px;">&nbsp;</td>
 </tr>
 </table>
 <![endif]-->
+
+  <escape>
+    <!--this bit keeps campaign monitor happy-->
+    <singleline></singleline>
+  </escape>
+  <field type="code" name="tracking" label="Tracking embed code"></field>
+  <content replace="{{tracking}}"></content> 
+  </div>
+
 </body>
 </html>
